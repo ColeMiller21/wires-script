@@ -1,6 +1,9 @@
 const connectMongo = require("../lib/connectMongo");
 const User = require("../lib/models/User");
 
+//REQUIRE THE NEW FILE THAT YOU WANT TO IMPORT IN THE DB
+const wl = require("../files/jsonWL1.json");
+
 const getAllUsers = async () => {
   try {
     const user = await User.find();
@@ -40,12 +43,9 @@ const createUser = async (address) => {
 
 const createUsers = async (userArray) => {
   for (const address of userArray) {
-    let userToCreate = { address };
     try {
-      await createUser(userToCreate);
-      console.log("CREATED USER: ", userToCreate);
+      await createUser(address);
     } catch (err) {
-      console.error("ERROR CREATING USER: ", userToCreate);
       console.error("REASON: ", err);
     }
   }
@@ -67,10 +67,10 @@ let singleUser = "0xde10FeE962e8D7392F2Fb46bE9964dC50b5A559B";
   //   let result = await getUser(address);
 
   //   UNCOMMENT BELOW IF YOU WANT TO CREATE A NEW CONFIG
-  let result = await createUser(singleUser);
+  // let result = await createUser(singleUser);
 
   //UNCOMMENT BELOW TO CREATE MULTIPLE USERS AT THE SAME TIME
-  // let result = await createUsers(manyUsers);
+  let result = await createUsers(wl);
 
   console.log("RESULT FROM user.js", result);
 })();
