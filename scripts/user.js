@@ -60,7 +60,7 @@ let singleUser = "0xde10FeE962e8D7392F2Fb46bE9964dC50b5A559B";
 (async () => {
   await connectMongo();
   //UNCOMMENT BELOW IF YOU WANT TO GET USERS
-  //   let result = await getAllUsers();
+  let result = await getAllUsers();
 
   // UNCOMMENT BELOW IF YOU WANT TO GET USER BY ADDRESS
   //   let address = "0xEd42a25A7fDE348473e57DB6DB4B86893b7B845B";
@@ -70,7 +70,7 @@ let singleUser = "0xde10FeE962e8D7392F2Fb46bE9964dC50b5A559B";
   // let result = await createUser(singleUser);
 
   //UNCOMMENT BELOW TO CREATE MULTIPLE USERS AT THE SAME TIME
-  let result = await createUsers(wl);
+  // let result = await createUsers(wl);
 
   console.log("RESULT FROM user.js", result);
 })();
